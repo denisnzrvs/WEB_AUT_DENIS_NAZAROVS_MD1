@@ -1,20 +1,31 @@
-describe('template spec', () => {
-  it('passes', () => {
-    //visit the demoqa website
-    cy.visit('https://demoqa.com/selectable')
-    //click on grid tab
-    cy.get('a[id="demo-tab-grid"]').click()
+import BasePage from '../pageObjects/Base.page.js';
+import GridPage from '../pageObjects/Grid.page.js';
 
-    //click two, four, six, eight, validate highight
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('Two').click().should('have.class', 'active')
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('Four').click().should('have.class', 'active')
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('Six').click().should('have.class', 'active')
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('Eight').click().should('have.class', 'active')
+before(() => {
+  BasePage.Visit;
+})
+describe('My First Test', () => {
+  context('Actions', () => {
 
-    //validate that one, three, five, seven are not highlighted
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('One').should('not.have.class', 'active')
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('Three').should('not.have.class', 'active')
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('Five').should('not.have.class', 'active')
-    cy.get('li[class="list-group-item list-group-item-action"]').contains('Seven').should('not.have.class', 'active')
+    it('Pressing grid buttons', () => {
+      //clicking on grid tab
+      BasePage.GridTab.click();
+      //clicking buttons
+      GridPage.ButtonTwo.click();
+      GridPage.ButtonFour.click();
+      GridPage.ButtonSix.click();
+      GridPage.ButtonEight.click();
+      //validating buttons are active
+      GridPage.ButtonTwo.should('have.class', 'active');
+      GridPage.ButtonFour.should('have.class', 'active');
+      GridPage.ButtonSix.should('have.class', 'active');
+      GridPage.ButtonEight.should('have.class', 'active');
+      //validating that other buttons are not highlighted
+      GridPage.ButtonOne.should('not.have.class', 'active');
+      GridPage.ButtonThree.should('not.have.class', 'active');
+      GridPage.ButtonFive.should('not.have.class', 'active');
+      GridPage.ButtonSeven.should('not.have.class', 'active');
+      GridPage.ButtonNine.should('not.have.class', 'active');
+    })
   })
 })
