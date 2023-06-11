@@ -1,12 +1,12 @@
 import BasePage from '../pageObjects/Base.page.js';
 import GridPage from '../pageObjects/Grid.page.js';
 
-before(() => {
-  BasePage.Visit;
-})
 describe('My First Test', () => {
-  context('Actions', () => {
-
+  context('Actions', () => {    
+    before(() => {
+      BasePage.Visit;
+    })
+    
     it('Pressing grid buttons', () => {
       //clicking on grid tab
       BasePage.GridTab.click();
