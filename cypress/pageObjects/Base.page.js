@@ -1,7 +1,7 @@
 class BasePage {
 
     static get Visit() {
-        return cy.visit('https://demoqa.com/selectable');
+        return cy.visit('/selectable');
     }
 
     static get GridTab() {
